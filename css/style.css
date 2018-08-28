@@ -54,7 +54,7 @@ html, body {
 }
 
 .tableSum td.active {
-    background: orange;
+    background: #fffb3e;
     color: #fff;
 }
 
