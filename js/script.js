@@ -23,9 +23,6 @@ window.onload = function () {
     wndModal.appendChild(closeModal);
     document.body.appendChild(modalOverlay);
 
-    //wndModal.appendChild
-
-
     //document.body.appendChild(table);
 
     /************************************************************************************/
