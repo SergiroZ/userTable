@@ -14,12 +14,12 @@
     width: 140px;
     border: none;
     cursor: pointer;
-    color: #ebcfb4;
+    color: #d9e3e6;
     padding: 2px;
     border-radius: 2px;
     font-size: 1em;
     text-align: center;
-    box-shadow: 2px 2px 4px rgba(244, 227, 208, 0.4);
+    box-shadow: 2px 2px 5px rgba(89, 83, 76, 0.5);
     background: #02122b;
 }
 

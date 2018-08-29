@@ -15,20 +15,27 @@ window.onload = function () {
 
     const modalOverlay = createDomElement('div', 'modal-overlay');
     const modalWrapper = createDomElement('div', 'modal-wrapper');
-    const openModal = createDomElement('div', 'modal');
-    const closeModal = createDomElement('div', 'close-modal');
+    const wndModal = createDomElement('div', 'modal');
+    const closeModal = createDomElement('button', 'close-modal', 'x');
 
     modalOverlay.appendChild(modalWrapper);
-    modalWrapper.appendChild(openModal);
-    openModal.appendChild(closeModal);
+    modalWrapper.appendChild(wndModal);
+    wndModal.appendChild(closeModal);
     document.body.appendChild(modalOverlay);
+
+    //wndModal.appendChild
 
 
     //document.body.appendChild(table);
 
     /************************************************************************************/
 
-    function createDomElement(elem, className = "", text = "", eventType = "", eventFun) {
+    function createDomElement(
+        elem,
+        className = "",
+        text      = "",
+        eventType = "",
+        eventFun) {
         const newElem = document.createElement(elem);
         if (className !== "") {
             newElem.className = className;
@@ -222,4 +229,8 @@ window.onload = function () {
 
         })
     }
+
+    /************************************************/
+
+
 };
