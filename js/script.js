@@ -2,17 +2,29 @@
 window.onload = function () {
 
     const titleTable = createDomElement('div', 'tbTitle tbStyle', 'Users table.');
+    document.body.appendChild(titleTable);
+
     const table = createDomElement('table', 'tbUser');
     const bt = createDomElement('button', 'bt');
-    const btFraming = createDomElement('div', 'button1', 'New User');
+    const btFraming = createDomElement('div', 'btAdd', 'New User');
     const btFilling = createDomElement('div', 'animation1');
 
     bt.appendChild(btFraming);
     btFraming.appendChild(btFilling);
-
-    document.body.appendChild(titleTable);
     document.body.appendChild(bt);
-    document.body.appendChild(table);
+
+    const modalOverlay = createDomElement('div', 'modal-overlay');
+    const modalWrapper = createDomElement('div', 'modal-wrapper');
+    const openModal = createDomElement('div', 'modal');
+    const closeModal = createDomElement('div', 'close-modal');
+
+    modalOverlay.appendChild(modalWrapper);
+    modalWrapper.appendChild(openModal);
+    openModal.appendChild(closeModal);
+    document.body.appendChild(modalOverlay);
+
+
+    //document.body.appendChild(table);
 
     /************************************************************************************/
 
@@ -202,8 +214,8 @@ window.onload = function () {
 
             $(".close-modal,.modal-overlay").click(function () {
                 closeModal();
-                bt.className = tmp;
                 bt.disabled = false;
+                bt.className = tmp;
             });
 
             $modal.initBlur(0.5);

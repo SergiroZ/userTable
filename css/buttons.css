@@ -9,7 +9,7 @@
     margin: 10px 30px;
 }
 
-.button1 {
+.btAdd {
     margin: 2px;
     width: 140px;
     border: none;
@@ -23,18 +23,8 @@
     background: #02122b;
 }
 
-.button2 {
-    margin: 2px;
-    width: 140px;
-    border: none;
-    cursor: pointer;
-    color: #fefdff;
-    padding: 4px;
-    border-radius: 3px;
-    font-size: 2em;
-    text-align: center;
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, .4);
-    background: #2f9d51;
+.btAdd:hover {
+    color: #aaaaaa;
 }
 
 .animation1 {
@@ -50,23 +40,8 @@
     border-radius: 100px;
 }
 
-.animation2 {
-    position: absolute;
-    width: 160px;
-    height: 2em;
-    background-color: #ecfff2;
-    top: 0px;
-    left: 0px;
-    transform: scale(0);
-    opacity: 0.5;
-}
-
-.button1:hover > .animation1 {
+.btAdd:hover > .animation1 {
     animation: ripple1 2s;
-}
-
-.button2:hover > .animation2 {
-    animation: ripple2 2s;
 }
 
 @keyframes ripple1 {
@@ -79,20 +54,6 @@
     }
     100% {
         transform: scale(1);
-        opacity: 0;
-    }
-}
-
-@keyframes ripple2 {
-    0% {
-        transform: scaleX(0);
-    }
-    20% {
-        transform: scaleX(1);
-        opacity: 0.3;
-    }
-    100% {
-        transform: scaleX(1);
         opacity: 0;
     }
 }
