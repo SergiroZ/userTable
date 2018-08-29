@@ -48,7 +48,7 @@ window.onload = function () {
                     webkitFilter: value,
                     filter: value
                 });
-            }
+            };
             $.fn.setBlur = function (v) {
                 const blur = $(this).data("blur");
                 v = Math.round(v);
@@ -62,7 +62,7 @@ window.onload = function () {
                         $(this).data("blur-value", v);
                     }
                 }
-            }
+            };
             $.fn.initBlur = function (_multiplier) {
                 if (typeof _multiplier == "undefined") _multiplier = 0.25;
                 multiplier = _multiplier;
@@ -80,7 +80,7 @@ window.onload = function () {
                         .data("last-pos", $(this).offset())
                     ;
                 });
-            }
+            };
 
             $.updateBlur = function () {
                 $(".js-blur").each(function () {
@@ -89,11 +89,11 @@ window.onload = function () {
                     var v = Math.abs(pos.left - lastPos.left) * multiplier;
                     $(this).data("last-pos", pos);
                     $(this).setBlur(v);
-                })
+                });
                 if (isUpdatingBlur) {
                     requestAnimationFrame($.updateBlur);
                 }
-            }
+            };
             $.startUpdatingBlur = function (stopDelay) {
                 if (typeof stopDelay == "undefined") {
                     stopDelay = -1;
@@ -109,7 +109,7 @@ window.onload = function () {
                 if (stopDelay > -1) {
                     updateBlurStopTimeout = setTimeout($.stopUpdatingBlur, stopDelay);
                 }
-            }
+            };
             $.stopUpdatingBlur = function () {
                 isUpdatingBlur = false;
             }
@@ -125,7 +125,7 @@ window.onload = function () {
 
             TweenMax.set($modal, {
                 autoAlpha: 0
-            })
+            });
 
             const isOpen = false;
 
@@ -191,16 +191,23 @@ window.onload = function () {
                 blocked = false;
             }
 
-            $(".button1").click(function () {
+            let tmp;
+
+            $(bt).click(function () {
+                tmp = bt.className;
+                bt.className = 'bt-dis';
+                bt.disabled = true;
                 openModal();
             });
 
-            $(".close-modal,.modal-overlay,.input-submit").click(function () {
+            $(".close-modal,.modal-overlay").click(function () {
                 closeModal();
+                bt.className = tmp;
+                bt.disabled = false;
             });
 
             $modal.initBlur(0.5);
 
         })
     }
-}
+};
