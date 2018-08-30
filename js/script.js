@@ -272,12 +272,19 @@ window.onload = function () {
         }
 
         let tmpClassName;
-        $(bt).click(function () {
-            tmpClassName = bt.className;
-            bt.className = 'bt-dis';
-            bt.disabled = true;
-            openModal();
-        });
+
+        function objClickShowModal(obj) {
+
+            $(obj).click(function () {
+                tmpClassName = bt.className;
+                bt.className = 'bt-dis';
+                bt.disabled = true;
+                openModal();
+            });
+        }
+
+        objClickShowModal(bt);
+
 
         $(".close-modal").click(function () {
             closeModal();
