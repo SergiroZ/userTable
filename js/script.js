@@ -34,6 +34,7 @@ window.onload = function () {
     formForm.appendChild(fieldsetForm);
     const legendForm = createDomElement('legend', '', ' Personal data ');
     fieldsetForm.appendChild(legendForm);
+
     const input_p__FirstName = createDomElement('p');
     fieldsetForm.appendChild(input_p__FirstName);
     const label_FirstName = createDomElement('label', 'field-inform', 'First Name: ');
@@ -43,27 +44,41 @@ window.onload = function () {
     input__FirstName.name = 'FirstName';
     input__FirstName.type = 'text';
 
-    //const input_p__FirstName = createDomElement('span', '', 'First Name: ');
+    const input_p__LastName = createDomElement('p');
+    fieldsetForm.appendChild(input_p__LastName);
+    const label_LastName = createDomElement('label', 'field-inform', 'Last Name: ');
+    input_p__LastName.appendChild(label_LastName);
+    const input__LastName = createDomElement('input', 'input-style');
+    input_p__LastName.appendChild(input__LastName);
+    input__LastName.name = 'LastName';
+    input__LastName.type = 'text';
 
+    const input_p__phone = createDomElement('p');
+    fieldsetForm.appendChild(input_p__phone);
+    const label_phone = createDomElement('label', 'field-inform', 'Phone: ');
+    input_p__phone.appendChild(label_phone);
+    const input__phone = createDomElement('input', 'input-style');
+    input_p__phone.appendChild(input__phone);
+    input__phone.name = 'phone';
+    input__phone.type = 'text';
 
-    /*    div_FirstName.appendChild(input_p__FirstName);
-        div_FirstName.appendChild(input__FirstName);*/
+    const input_p__email = createDomElement('p');
+    fieldsetForm.appendChild(input_p__email);
+    const label_email = createDomElement('label', 'field-inform', 'E-mail: ');
+    input_p__email.appendChild(label_email);
+    const input__email = createDomElement('input', 'input-style');
+    input_p__email.appendChild(input__email);
+    input__email.name = 'email';
+    input__email.type = 'text';
 
-
-    /*    const input__LastName = createDomElement('input','input-form','Last Name: ');
-        const input__phone = createDomElement('input','input-form','Phone: ');
-        const input__email = createDomElement('input','input-form','E-mail: ');
-        const input__salary = createDomElement('input','input-form','Salary: ');*/
-
-
-    /*    input__LastName.name='LastName';
-        input__LastName.type='text';*/
-
-
-    /*    validForm.appendChild(input__LastName);
-        validForm.appendChild(input__phone);
-        validForm.appendChild(input__email);
-        validForm.appendChild(input__salary);*/
+    const input_p__salary = createDomElement('p');
+    fieldsetForm.appendChild(input_p__salary);
+    const label_salary = createDomElement('label', 'field-inform', 'Salary: ');
+    input_p__salary.appendChild(label_salary);
+    const input__salary = createDomElement('input', 'input-style');
+    input_p__salary.appendChild(input__salary);
+    input__salary.name = 'salary';
+    input__salary.type = 'float';
 
 
     wndModal.appendChild(closeModal);
@@ -96,6 +111,7 @@ window.onload = function () {
         return newElem;
     }
 
+
     /*Modal motion*/
     {
         (function () {
@@ -117,8 +133,8 @@ window.onload = function () {
             $.fn.setBlur = function (v) {
                 const blur = $(this).data("blur");
                 v = Math.round(v);
-                if ($(this).data("blur-value") != v) {
-                    if (v == 0) {
+                if ($(this).data("blur-value") !== v) {
+                    if (v === 0) {
                         $(this).toggleBlur(false);
                     } else {
                         $(this).toggleBlur(true);
@@ -129,7 +145,7 @@ window.onload = function () {
                 }
             };
             $.fn.initBlur = function (_multiplier) {
-                if (typeof _multiplier == "undefined") _multiplier = 0.25;
+                if (typeof _multiplier === "undefined") _multiplier = 0.25;
                 multiplier = _multiplier;
                 var defs = $(".filters defs").get(0);
                 var blur = $("#blur").get(0);
@@ -160,7 +176,7 @@ window.onload = function () {
                 }
             };
             $.startUpdatingBlur = function (stopDelay) {
-                if (typeof stopDelay == "undefined") {
+                if (typeof stopDelay === "undefined") {
                     stopDelay = -1;
                 }
                 if (updateBlurStopTimeout != null) {
@@ -256,21 +272,18 @@ window.onload = function () {
                 blocked = false;
             }
 
-            let tmp;
-
+            let tmpClassName;
             $(bt).click(function () {
-                tmp = bt.className;
+                tmpClassName = bt.className;
                 bt.className = 'bt-dis';
                 bt.disabled = true;
                 openModal();
-
-
             });
 
             $(".close-modal").click(function () {
                 closeModal();
                 bt.disabled = false;
-                bt.className = tmp;
+                bt.className = tmpClassName;
             });
 
             $modal.initBlur(0.5);
@@ -347,6 +360,5 @@ window.onload = function () {
         container.style.display = 'block';
         form.elements.text.focus();
     }
-
 
 };
