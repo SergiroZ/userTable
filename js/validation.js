@@ -2,19 +2,19 @@
 // (а форма будет не в нем, а рядом с ним, чтобы не полупрозрачная)
 function showCover() {
     var coverDiv = document.createElement('div');
-    coverDiv.id = 'cover-div';
+    coverDiv.className = 'cover-div';
     document.body.appendChild(coverDiv);
 }
 
 function hideCover() {
-    document.body.removeChild(document.getElementById('cover-div'));
+    document.body.removeChild(document.getElementsByClassName('cover-div'));
 }
 
 function showPrompt(text, callback) {
     showCover();
-    var form = document.getElementById('prompt-form');
-    var container = document.getElementById('prompt-form-container');
-    document.getElementById('prompt-message').innerHTML = text;
+    var form = document.getElementsByClassName('prompt-form');
+    var container = document.getElementsByClassName('prompt-form-container');
+    document.getElementsByClassName('prompt-message').innerHTML = text;
     form.elements.text.value = '';
 
     function complete(value) {
@@ -64,7 +64,7 @@ function showPrompt(text, callback) {
     form.elements.text.focus();
 }
 
-document.getElementById('show-button').onclick = function () {
+document.getElementsByClassName('botton1').onclick = function () {
     showPrompt("Введите что-нибудь<br>...умное :)", function (value) {
         alert("Вы ввели: " + value);
     });

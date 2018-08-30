@@ -17,12 +17,61 @@ window.onload = function () {
     const modalWrapper = createDomElement('div', 'modal-wrapper');
     const wndModal = createDomElement('div', 'modal');
     const closeModal = createDomElement('button', 'close-modal', 'x');
+    const modalHeader = createDomElement('div', 'modal-h2');
 
     modalOverlay.appendChild(modalWrapper);
     modalWrapper.appendChild(wndModal);
+
+
+    const entryFields = createDomElement('div', 'entry-modal');
+    modalHeader.innerText = 'Entry fields:';
+    wndModal.appendChild(modalHeader);
+    wndModal.appendChild(entryFields);
+
+    const formForm = createDomElement('form', 'entry-modal');
+    entryFields.appendChild(formForm);
+    const fieldsetForm = createDomElement('fieldset');
+    formForm.appendChild(fieldsetForm);
+    const legendForm = createDomElement('legend', '', ' Personal data ');
+    fieldsetForm.appendChild(legendForm);
+    const input_p__FirstName = createDomElement('p');
+    fieldsetForm.appendChild(input_p__FirstName);
+    const label_FirstName = createDomElement('label', 'field-inform', 'First Name: ');
+    input_p__FirstName.appendChild(label_FirstName);
+    const input__FirstName = createDomElement('input', 'input-style');
+    input_p__FirstName.appendChild(input__FirstName);
+    input__FirstName.name = 'FirstName';
+    input__FirstName.type = 'text';
+
+    //const input_p__FirstName = createDomElement('span', '', 'First Name: ');
+
+
+    /*    div_FirstName.appendChild(input_p__FirstName);
+        div_FirstName.appendChild(input__FirstName);*/
+
+
+    /*    const input__LastName = createDomElement('input','input-form','Last Name: ');
+        const input__phone = createDomElement('input','input-form','Phone: ');
+        const input__email = createDomElement('input','input-form','E-mail: ');
+        const input__salary = createDomElement('input','input-form','Salary: ');*/
+
+
+    /*    input__LastName.name='LastName';
+        input__LastName.type='text';*/
+
+
+    /*    validForm.appendChild(input__LastName);
+        validForm.appendChild(input__phone);
+        validForm.appendChild(input__email);
+        validForm.appendChild(input__salary);*/
+
+
     wndModal.appendChild(closeModal);
+
+
     document.body.appendChild(modalOverlay);
 
+    // !!!! TO DO
     //document.body.appendChild(table);
 
     /************************************************************************************/
@@ -214,9 +263,11 @@ window.onload = function () {
                 bt.className = 'bt-dis';
                 bt.disabled = true;
                 openModal();
+
+
             });
 
-            $(".close-modal,.modal-overlay").click(function () {
+            $(".close-modal").click(function () {
                 closeModal();
                 bt.disabled = false;
                 bt.className = tmp;
@@ -228,6 +279,74 @@ window.onload = function () {
     }
 
     /************************************************/
+
+
+    /*    // Показать полупрозрачный DIV, затеняющий всю страницу
+        // (а форма будет не в нем, а рядом с ним, чтобы не полупрозрачная)
+        function showCover() {
+            var coverDiv = document.createElement('div');
+            coverDiv.className = 'cover-div';
+            wndModal.appendChild(coverDiv);
+        }
+
+        function hideCover() {
+            document.body.removeChild(document.getElementsByClassName('cover-div'));
+        }*/
+
+
+    function showPrompt(text, callback) {
+        //showCover();
+        var form = document.getElementsByClassName('.prompt-form');
+        var container = document.getElementsByClassName('.prompt-form-container');
+        document.getElementsByClassName('.prompt-message').innerHTML = text;
+        form.elements.text.value = '';
+
+        function complete(value) {
+            //hideCover();
+            container.style.display = 'none';
+            document.onkeydown = null;
+            callback(value);
+        }
+
+        form.onsubmit = function () {
+            var value = form.elements.text.value;
+            if (value === '') return false; // игнорировать пустой submit
+
+            complete(value);
+            return false;
+        };
+
+        form.elements.cancel.onclick = function () {
+            complete(null);
+        };
+
+        document.onkeydown = function (e) {
+            if (e.keyCode === 27) { // escape
+                complete(null);
+            }
+        };
+
+        var lastElem = form.elements[form.elements.length - 1];
+        var firstElem = form.elements[0];
+
+        lastElem.onkeydown = function (e) {
+            if (e.keyCode === 9 && !e.shiftKey) {
+                firstElem.focus();
+                return false;
+            }
+        };
+
+        firstElem.onkeydown = function (e) {
+            if (e.keyCode === 9 && e.shiftKey) {
+                lastElem.focus();
+                return false;
+            }
+        };
+
+
+        container.style.display = 'block';
+        form.elements.text.focus();
+    }
 
 
 };

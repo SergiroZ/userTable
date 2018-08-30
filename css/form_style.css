@@ -1,4 +1,4 @@
-#prompt-form {
+.prompt-form {
     display: inline-block;
     padding: 5px 5px 5px 70px;
     width: 200px;
@@ -7,7 +7,7 @@
     vertical-align: middle;
 }
 
-#prompt-form-container {
+.prompt-form-container {
     position: fixed;
     top: 0;
     left: 0;
@@ -18,14 +18,14 @@
     text-align: center;
 }
 
-#prompt-form-container:before {
+.prompt-form-container:before {
     display: inline-block;
     height: 100%;
     content: '';
     vertical-align: middle;
 }
 
-#cover-div {
+.cover-div {
     position: fixed;
     top: 0;
     left: 0;
@@ -36,8 +36,11 @@
     opacity: 0.3;
 }
 
-#prompt-form input[name="text"] {
-    display: block;
+.field-inform {
     margin: 5px;
-    width: 180px;
+    width: 100%;
+}
+
+.input-style {
+    width: 300px;
 }
