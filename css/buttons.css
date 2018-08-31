@@ -3,6 +3,7 @@
     position: relative;
     margin: 10px;
     left: 20px;
+    border-radius: 3px;
 }
 
 .bt-dis {

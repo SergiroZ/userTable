@@ -80,6 +80,21 @@ window.onload = function () {
     input__salary.name = 'salary';
     input__salary.type = 'float';
 
+    const bt_div = createDomElement('div', 'modal-box');
+    fieldsetForm.appendChild(bt_div);
+
+    const submit_save = createDomElement('input');
+    bt_div.appendChild(submit_save);
+    submit_save.type = 'submit';
+    submit_save.value = 'Ok';
+    const submit_cancel = createDomElement('input');
+    bt_div.appendChild(submit_cancel);
+    submit_cancel.type = 'button';
+    submit_cancel.name = 'cancel';
+    submit_cancel.value = 'Cancel';
+
+    bt_div.appendChild(submit_save);
+    bt_div.appendChild(submit_cancel);
 
     wndModal.appendChild(closeModal);
 
@@ -280,11 +295,10 @@ window.onload = function () {
                 bt.className = 'bt-dis';
                 bt.disabled = true;
                 openModal();
+                submit_save.disabled = true;
             });
         }
-
         objClickShowModal(bt);
-
 
         $(".close-modal").click(function () {
             closeModal();
@@ -300,59 +314,59 @@ window.onload = function () {
     /************************************************/
 
 
-    function showPrompt(text, callback) {
-        //showCover();
-        var form = document.getElementsByClassName('.prompt-form');
-        var container = document.getElementsByClassName('.prompt-form-container');
-        document.getElementsByClassName('.prompt-message').innerHTML = text;
-        form.elements.text.value = '';
+    /* function showPrompt(text, callback) {
+         //showCover();
+         var form = document.getElementsByClassName('.prompt-form');
+         var container = document.getElementsByClassName('.prompt-form-container');
+         document.getElementsByClassName('.prompt-message').innerHTML = text;
+         form.elements.text.value = '';
 
-        function complete(value) {
-            //hideCover();
-            container.style.display = 'none';
-            document.onkeydown = null;
-            callback(value);
-        }
+         function complete(value) {
+             //hideCover();
+             container.style.display = 'none';
+             document.onkeydown = null;
+             callback(value);
+         }
 
-        form.onsubmit = function () {
-            var value = form.elements.text.value;
-            if (value === '') return false; // игнорировать пустой submit
+         form.onsubmit = function () {
+             var value = form.elements.text.value;
+             if (value === '') return false; // игнорировать пустой submit
 
-            complete(value);
-            return false;
-        };
+             complete(value);
+             return false;
+         };
 
-        form.elements.cancel.onclick = function () {
-            complete(null);
-        };
+         form.elements.cancel.onclick = function () {
+             complete(null);
+         };
 
-        document.onkeydown = function (e) {
-            if (e.keyCode === 27) { // escape
-                complete(null);
-            }
-        };
+         document.onkeydown = function (e) {
+             if (e.keyCode === 27) { // escape
+                 complete(null);
+             }
+         };
 
-        var lastElem = form.elements[form.elements.length - 1];
-        var firstElem = form.elements[0];
+         var lastElem = form.elements[form.elements.length - 1];
+         var firstElem = form.elements[0];
 
-        lastElem.onkeydown = function (e) {
-            if (e.keyCode === 9 && !e.shiftKey) {
-                firstElem.focus();
-                return false;
-            }
-        };
+         lastElem.onkeydown = function (e) {
+             if (e.keyCode === 9 && !e.shiftKey) {
+                 firstElem.focus();
+                 return false;
+             }
+         };
 
-        firstElem.onkeydown = function (e) {
-            if (e.keyCode === 9 && e.shiftKey) {
-                lastElem.focus();
-                return false;
-            }
-        };
+         firstElem.onkeydown = function (e) {
+             if (e.keyCode === 9 && e.shiftKey) {
+                 lastElem.focus();
+                 return false;
+             }
+         };
 
 
-        container.style.display = 'block';
-        form.elements.text.focus();
-    }
-
+         container.style.display = 'block';
+         form.elements.text.focus();
+     }
+ */
 
 };
